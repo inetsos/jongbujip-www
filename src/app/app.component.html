@@ -1,3 +1,5 @@
+<mat-progress-bar *ngIf="loading" class="loading-overlay" [mode]="'indeterminate'" ></mat-progress-bar>
+
 <div class="container-fluid">
   <div class="row">
     <nav class="navbar navbar-default navbar-custom">
@@ -14,18 +16,18 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li [routerLinkActive]="['active']">
-              <a [routerLink]="['/','users']">회원</a>
+              <a [routerLink]="['/','users']">회원정보</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li [routerLinkActive]="['active']">
+            <li *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']"> <!-- 1 -->
               <a [routerLink]="['/','login']">로그인</a>
             </li>
-            <li [routerLinkActive]="['active']">
+            <li *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']"> <!-- 1 -->
               <a [routerLink]="['/','users','new']">회원등록</a>
             </li>
-            <li>
-              <a>로그아웃</a>
+            <li *ngIf="authService.isLoggedIn()">  <!-- 1 -->
+              <a (click)="authService.logout()">로그아웃</a>
             </li>
           </ul>
         </div>
