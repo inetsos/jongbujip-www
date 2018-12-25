@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { UsersResolve } from './users.resolve';
 import { UserResolve } from './user.resolve';
+import { MenusResolve } from './menus.resolve';
 
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
@@ -12,6 +13,7 @@ import { UserNewComponent } from './user-new/user-new.component';
 import { UserIndexComponent } from './user-index/user-index.component';
 import { UserShowComponent } from './user-show/user-show.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { OrderComponent } from './order/order.component';
 import { Error404Component } from './error404/error404.component';
 
 const routes: Routes = [
@@ -35,6 +37,15 @@ const routes: Routes = [
         component: UserEditComponent,
         resolve: {
           user: UserResolve
+        }
+      },
+    ]
+  },
+  { path: 'order', canActivate: [AuthGuard],
+    children: [
+      { path: '', component: OrderComponent,
+        resolve: {
+          menus: MenusResolve,
         }
       },
     ]

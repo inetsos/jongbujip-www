@@ -18,6 +18,9 @@
             <li [routerLinkActive]="['active']">
               <a [routerLink]="['/','users']">회원정보</a>
             </li>
+            <li [routerLinkActive]="['active']">
+              <a [routerLink]="['/','order']">주문하기</a>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']"> <!-- 1 -->

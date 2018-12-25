@@ -8,11 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './auth.guard';
 import { UsersResolve } from './users.resolve';
 import { UserResolve } from './user.resolve';
+import { MenusResolve } from './menus.resolve';
+import { MenuResolve } from './menu.resolve';
 
 import { UtilService } from './util.service';
 import { AuthService } from './auth.service';
 import { RequestInterceptorService } from './request-interceptor.service';
 import { UserService } from './user.service';
+import { MenuService } from './menu.service';
 
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -22,6 +25,7 @@ import { UserNewComponent } from './user-new/user-new.component';
 import { UserIndexComponent } from './user-index/user-index.component';
 import { UserShowComponent } from './user-show/user-show.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,8 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     UserNewComponent,
     UserIndexComponent,
     UserShowComponent,
-    UserEditComponent
+    UserEditComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
@@ -52,8 +57,11 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     UtilService,
     AuthService,
     UserService,
+    MenuService,
     UsersResolve,
-    UserResolve
+    UserResolve,
+    MenusResolve,
+    MenuResolve
   ],
   bootstrap: [AppComponent]
 })
